@@ -1,0 +1,15 @@
+.breadcrumbs {
+    font-size: 1.5rem;
+    opacity: 80%;
+}
+
+.breadcrumbs .breadcrumbs-item {
+    padding-block: .375em;
+    display: inline-block;
+}
+
+.breadcrumbs .breadcrumbs-item::after {
+    margin-inline: .25em;
+    content: "​/";
+    display: inline-block;
+}
