@@ -39,7 +39,7 @@ function db_get_room_employees($id) {
 
 function db_get_room_keys($id) {
     global $pdo, $DB_DATABASE;
-    $query = "select concat(employee.name, ' ', employee.surname) as 'fullname', employee.employee_id from employee join $DB_DATABASE.key on employee.employee_id = ip_3.key.employee where $DB_DATABASE.key.room = $id;";
+    $query = "select concat(employee.name, ' ', employee.surname) as 'fullname', employee.employee_id from employee join $DB_DATABASE.key on employee.employee_id = $DB_DATABASE.key.employee where $DB_DATABASE.key.room = $id;";
     return $pdo->query($query)->fetchAll(PDO::FETCH_OBJ);
 }
 
