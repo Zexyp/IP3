@@ -1,5 +1,5 @@
 <?php
-$config = parse_ini_file('config.ini');
+$config = parse_ini_file('config/config.ini');
 
 $DB_HOST = $config['DB_HOST'];
 $DB_PORT = $config['DB_PORT'];
