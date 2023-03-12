@@ -1,0 +1,38 @@
+:root {
+    --bs-dark: #27282a;
+    --bs-dark-rgb: 39,40,42;
+}
+
+body {
+    /*
+    background-image: url("../img/grain.jpg");
+    image-rendering: pixelated;
+    aspect-ratio: initial;
+    background-size: 1000em;
+    background-blend-mode: multiply;
+    */
+
+    background-color: var(--bs-gray-600);
+}
+
+header {
+    box-shadow: 0 0 20px black;
+    z-index: 100;
+    position: relative;
+}
+
+.logo {
+    filter: drop-shadow(-2.5px 0 15px #f0f) drop-shadow(2.5px 0 15px #0ff);
+    transition: 1s;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 15px #fff8) drop-shadow(-2.5px 0 20px #f0f) drop-shadow(2.5px 0 20px #0ff);
+}
+
+.btn {
+    border-radius: 0;
+    border-color: #fff4;
+}
+
+
