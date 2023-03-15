@@ -5,8 +5,9 @@
 .shrinky-box {
     --shrinky-border: 2px;
     --shrinky-length: 1em;
-    --shrinky-color: white;
+    --shrinky-color: currentcolor;
     --shrinky-background-color: var(--bs-dark);
+    --shrinky-outline-factor: .75;
     display: inline-block;
     float: left;
     position: relative;
@@ -31,26 +32,29 @@
     opacity: 1;
 }
 .shrinky-box:before {
+    /* +1 just to be safe */
     width: calc(100% + var(--shrinky-border) * 2 + 1px);
-    height: calc(100% + var(--shrinky-border) + 2px);
+    height: calc(100% + var(--shrinky-border) * 2);
     z-index: 1;
     transition: height 1s ease, opacity 0.8s ease;
 }
 .shrinky-box:after {
+    /* +1 just to be safe */
     height: calc(100% + var(--shrinky-border) * 2 + 1px);
-    width: calc(100% + var(--shrinky-border) + 2px);
+    width: calc(100% + var(--shrinky-border) * 2);
+
     z-index: 1;
     transition: width 1s ease, opacity 0.8s ease;
 }
 .shrinky-box:hover:before, .shrinky-box:focus:before {
     transition: height 0.2s ease, opacity 0.3s ease;
     height: calc(100% - var(--shrinky-length));
-    opacity: 0.7;
+    opacity: var(--shrinky-outline-factor);
 }
 .shrinky-box:hover:after, .shrinky-box:focus:after {
     transition: width 0.2s ease, opacity 0.3s ease;
     width: calc(100% - var(--shrinky-length));
-    opacity: 0.8;
+    opacity: var(--shrinky-outline-factor);
 }
 .shrinky-box__image {
     fill: var(--shrinky-background-color);

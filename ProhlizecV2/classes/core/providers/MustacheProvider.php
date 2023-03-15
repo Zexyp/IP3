@@ -9,7 +9,7 @@ class MustacheProvider
 {
     private static ?Mustache_Engine $instance = null;
 
-    public static function get()
+    public static function get() : Mustache_Engine
     {
         if (!self::$instance)
             self::createInstance();

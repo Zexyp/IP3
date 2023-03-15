@@ -2,8 +2,15 @@
 
 require_once "../bootstrap.php";
 
-use Core\Pages\Page;
-use Core\Providers\PDOProvider;
+use Core\Pages\AuthenticatedPage;
 
-$page = new Page();
+class IndexPage extends AuthenticatedPage
+{
+    protected function html_main(): string
+    {
+        return '<h1 class="display-1">Index</h1>';
+    }
+}
+
+$page = new IndexPage();
 $page->render();
