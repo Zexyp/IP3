@@ -20,7 +20,7 @@ class ErrorPage extends Page
     {
         parent::prepare();
 
-        $this->title = "Error {$this->exception->getCode()}";
+        $this->title = "{$this->exception->getMessage()} {$this->exception->getCode()}";
     }
 
     protected function http_headers(): void

@@ -7,15 +7,19 @@ use Core\Providers\MustacheProvider;
 
 class LogoutPage extends AuthenticatedPage
 {
+    protected string $title = "Logout";
+
     protected function prepare(): void
     {
+        parent::prepare();
+
         session_destroy();
         $this->user = null;
     }
 
     protected function http_headers(): void
     {
-        header('Location: login.php', true, 302);
+        self::redirect('login.php');
     }
 
     protected function html_main(): string

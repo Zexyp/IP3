@@ -17,7 +17,6 @@ class LoginPage extends Page
 
     protected function prepare(): void
     {
-        var_dump(session_status());
         if ($_SERVER['REQUEST_METHOD'] != 'POST')
             return;
 
@@ -43,7 +42,7 @@ class LoginPage extends Page
     protected function http_headers(): void
     {
         if ($this->success)
-            header('Location: /', true, 302);
+            self::redirect('/');
     }
 
     protected function html_head(): string

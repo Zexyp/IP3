@@ -1,23 +1,23 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center mx-5 glow-logo" href="/">
-            <img style="height: 3em;" src="public/img/logo.svg" alt="Logo"/>
+            <img style="height: 3em;" src="/public/img/logo.svg" alt="Logo"/>
         </a>
         {{#user}}
         <div>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item mx-2">
-                    <a href="employees.php" class="nav-link shrinky-box glow-hover-outer"><span>Employees</span></a>
+                    <a href="/employee/list.php" class="nav-link shrinky-box glow-hover-outer"><span>Employees</span></a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="rooms.php" class="nav-link shrinky-box glow-hover-outer"><span>Rooms</span></a>
+                    <a href="/room/list.php" class="nav-link shrinky-box glow-hover-outer"><span>Rooms</span></a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a href="keys.php" class="nav-link shrinky-box glow-hover-outer"><span>Keys</span></a>
+                    <a href="/key/list.php" class="nav-link shrinky-box glow-hover-outer"><span>Keys</span></a>
                 </li>
                 {{#user.has_rights}}
                 <li class="nav-item mx-2">
-                    <a href="users.php" class="nav-link shrinky-box glow-hover-outer"><span>Users</span></a>
+                    <a href="/user/list.php" class="nav-link shrinky-box glow-hover-outer"><span>Users</span></a>
                 </li>
                 {{/user.has_rights}}
             </ul>
@@ -28,7 +28,7 @@
                 ​
                 <i class="bi bi-person"></i>
             </a>
-            <a href="logout.php" class="btn btn-outline-light mx-2 glow-hover">
+            <a href="/logout.php" class="btn btn-outline-light mx-2 glow-hover">
                 Logout
                 <i class="bi bi-box-arrow-right"></i>
             </a>
@@ -38,7 +38,7 @@
         <div>
             <a href="
             {{^fix_login}}
-            login.php
+            /login.php
             {{/fix_login}}
             {{#fix_login}}
             https://youtu.be/watch?v=dQw4w9WgXcQ

@@ -2,21 +2,19 @@
     <div class=" w-100 p-4 m-2">
         {{{alert}}}
         <form method="post">
-            <div class="mb-2 p-2 w-100 shrinky-box">
+            <div class="mb-2 p-3 w-100 shrinky-box">
                 <label class="form-label" for="username">Username</label>
-                <input type="text" id="username" name="username" class="form-control" value="{{username}}"/>
-            </div>
+                <input type="text" id="username" name="username" class="form-control mb-2" value="{{username}}"/>
 
-            <div class="mb-2 p-2 w-100 shrinky-box">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control" value="{{password}}"/>
-            </div>
+                <input type="password" id="password" name="password" class="form-control mb-2" value="{{password}}"/>
 
-            <div class="w-100 text-center">
-                <button type="submit" class="mx-50 my-4 btn btn-outline-light glow-hover">
-                    Login
-                    <i class="bi bi-box-arrow-in-right"></i>
-                </button>
+                <div class="w-100 text-center">
+                    <button type="submit" class="mx-50 my-4 btn btn-outline-light glow-hover">
+                        Login
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </button>
+                </div>
             </div>
         </form>
     </div>

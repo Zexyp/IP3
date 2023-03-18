@@ -17,6 +17,6 @@ class AppConfig
 
     private static function createInstance() : void
     {
-        self::$instance = Config::load(["../config/config.json"]);
+        self::$instance = Config::load([__DIR__ . '/../../config/config.json']);
     }
 }

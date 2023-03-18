@@ -31,7 +31,7 @@ class User {
         if ($data == null)
             return null;
 
-        return self::user_from_data($data);
+        return self::instance_from_data($data);
     }
 
     public static function get($user_id) : ?User {
@@ -45,10 +45,16 @@ class User {
         if ($data == null)
             return null;
 
-        return self::user_from_data($data);
+        return self::instance_from_data($data);
     }
 
-    private static function user_from_data($data) : User {
+    public static function get_all() : array {
+        $pdo = PDOProvider::get();
+        $stmt = $pdo->query('SELECT * FROM `' . self::$table . '`');
+        return array_map([__CLASS__, 'instance_from_data'], $stmt->fetchAll());
+    }
+
+    private static function instance_from_data($data) : User {
         $user = new User();
         $user->user_id = $data['user_id'];
         $user->username = $data['username'];

@@ -2,6 +2,7 @@
 
 namespace Core\Pages;
 
+use Core\Exceptions\UnauthorizedException;
 use Core\Providers\MustacheProvider;
 use User;
 
@@ -9,19 +10,17 @@ class AuthenticatedPage extends Page
 {
     protected ?User $user = null;
 
-    protected function authentication(): bool
+    protected function prepare(): void
     {
         session_start();
 
         if (!isset($_SESSION['user_id']))
-            return false;
+            throw new UnauthorizedException();
 
-        if (User::exists($_SESSION['user_id'])) {
-            $this->user = User::get($_SESSION['user_id']);
-            return true;
-        }
+        if (!User::exists($_SESSION['user_id']))
+            throw new UnauthorizedException();
 
-        return false;
+        $this->user = User::get($_SESSION['user_id']);
     }
 
     protected function html_header(): string
@@ -29,8 +28,6 @@ class AuthenticatedPage extends Page
         $data = [
             'user' => $this->user,
         ];
-
-        var_dump($data);
 
         return MustacheProvider::get()->render('header', $data);
     }

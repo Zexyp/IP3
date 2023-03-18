@@ -6,9 +6,11 @@ use Core\Pages\AuthenticatedPage;
 
 class IndexPage extends AuthenticatedPage
 {
+    protected string $title = "Index";
+
     protected function html_main(): string
     {
-        return '<h1 class="display-1">Index</h1>';
+        return '<div class="m-2 p-2"><h1 class="display-3 my-5">Index</h1></div>';
     }
 }
 

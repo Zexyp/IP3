@@ -60,6 +60,10 @@
     color: #888!important;
 }
 
+.table > :not(caption) > * > * {
+    border-bottom-width: var(--bs-border-width);
+}
+
 html {
     position: relative;
     min-height: 100%;

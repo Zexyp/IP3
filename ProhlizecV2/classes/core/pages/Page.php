@@ -16,6 +16,11 @@ class Page
     protected string $title = '';
     protected ?array $allowed_methods = ['GET'];
 
+    static public function redirect(string $location) : void
+    {
+        header("Location: $location", true, 302);
+    }
+
     protected function authentication() : bool {
         return true;
     }
@@ -59,7 +64,7 @@ class Page
                 throw new MethodNotAllowedException();
 
             if (!$this->authentication())
-                throw new UnauthorizedException();
+                throw new InternalServerErrorException();
 
             $this->prepare();
 
