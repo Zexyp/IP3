@@ -191,3 +191,70 @@ nav, footer {
     --bs-alert-border-color: var(--bs-dark-border-subtle);
     --bs-alert-link-color: var(--bs-dark-text);
 }
+
+.link-primary {
+    color: #63D2FF!important; /*4898BA*/
+    transition: .2s;
+}
+
+.link-primary:focus, .link-primary:hover {
+    color: #4593B2!important;
+}
+
+.link-secondary {
+    color: #6c757d!important;
+    transition: .2s;
+}
+
+.link-secondary:focus, .link-secondary:hover {
+    color: #4D545A!important;
+}
+
+.link-success {
+    color: #24B06F!important;
+    transition: .2s;
+}
+
+.link-success:focus, .link-success:hover {
+    color: #198754!important;
+}
+
+.link-danger {
+    color: #ff4657 !important;
+    transition: .2s;
+}
+
+.link-danger:focus, .link-danger:hover {
+    color: #b02a37!important;
+}
+
+.link-warning {
+    color: #ffc107!important;
+    transition: .2s;
+}
+
+.link-warning:focus, .link-warning:hover {
+    color: #B08403!important;
+}
+
+.link-info {
+    color: #D17CFF!important;/*AA63CE*/
+    transition: .2s;
+}
+
+.link-info:focus, .link-info:hover {
+    color: #9157B2!important;
+}
+
+.link-light {
+    color: #f8f9fa!important;
+    transition: .2s;
+}
+
+.link-light:focus, .link-light:hover {
+    color: #AFAFB0!important;
+}
+
+a {
+    cursor: pointer;
+}

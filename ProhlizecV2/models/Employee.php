@@ -30,9 +30,10 @@ class Employee {
         return self::instance_from_data($data);
     }
 
-    public static function get_all() : array {
+    public static function get_all(?array $order = null) : array {
         $pdo = PDOProvider::get();
-        $stmt = $pdo->query('SELECT * FROM `' . self::$table . '`');
+        $stmt = $pdo->query('SELECT * FROM `' . self::$table . '`' .
+            ($order != null ? OrderBuilder::build($order) : ''));
         return array_map([__CLASS__, 'instance_from_data'], $stmt->fetchAll());
     }
 

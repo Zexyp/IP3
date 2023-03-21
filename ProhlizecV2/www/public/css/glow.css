@@ -27,6 +27,16 @@
             2.5px 0 20px #0ff;
 }
 
+.glow-hover-outer-muted {
+    transition: .4s;
+}
+.glow-hover-outer-muted:hover, .glow-hover-outer:focus {
+    box-shadow:
+            0 0 12px #fff4,
+            -2.5px 0 10px #f0f8,
+            2.5px 0 10px #0ff8;
+}
+
 .glow-hover {
     transition: .4s;
 }

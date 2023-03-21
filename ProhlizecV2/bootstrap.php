@@ -7,15 +7,22 @@ spl_autoload_register(
         $lmao = explode('\\', $class_name);
         $path = strtolower(implode('/', array_slice($lmao, 0, count($lmao) - 1)));
         $name = end($lmao);
-        include __DIR__ . "/classes/{$path}/$name.php";
+        $filepath = __DIR__ . "/classes/$path/$name.php";
+        if (file_exists($filepath))
+            include $filepath;
     }
 );
 
 spl_autoload_register(
     function ($class_name) {
-        include __DIR__ . "/models/{$class_name}.php";
+        $filepath = __DIR__ . "/models/$class_name.php";
+        if (file_exists($filepath))
+            include $filepath;
     }
 );
 
+use Core\AppConfig;
 use Tracy\Debugger;
-Debugger::enable(Debugger::DEVELOPMENT);
+
+if (AppConfig::get('debug'))
+    Debugger::enable(Debugger::Development);

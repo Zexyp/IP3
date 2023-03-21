@@ -1,0 +1,10 @@
+<tr class="glow-hover-outer-muted" style="cursor: pointer;" onclick="(function() { window.location.href = 'view.php' })()">
+    <td><a class="link-info" href"#">{{employee.name}} {{employee.surname}}</a></td>
+    <td><a class="link-info" href"#">{{room.name}} ({{room.no}})</a></td>
+    {{#edit}}
+    <td class="text-end">
+        <a class="px-2 link-primary" href="#"><i class="bi bi-pencil-square"></i></a>
+        <a class="mx-2 link-danger" href="#"><i class="bi bi-x-lg"></i></a>
+    </td>
+    {{/edit}}
+</tr>

@@ -11,7 +11,7 @@ use Core\Providers\MustacheProvider;
 use Core\Exceptions\BaseException;
 use Exception;
 
-class Page
+abstract class Page
 {
     protected string $title = '';
     protected ?array $allowed_methods = ['GET'];

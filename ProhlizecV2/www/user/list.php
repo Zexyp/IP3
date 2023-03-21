@@ -9,14 +9,23 @@ class UsersPage extends TablePage {
     protected string $title = 'Users';
 
     protected string $heading = 'Users';
-    protected array $column_names = ['Username', 'Has Rights'];
+    protected array $columns = [
+        [
+            'name' => 'Username',
+            'id' => 'username'
+        ],
+        [
+            'name' => 'Has Rights',
+            'id' => 'rights'
+        ]
+    ];
 
     protected function html_table_rows(): array
     {
-        return array_map(function ($e) { return MustacheProvider::get()->render('rows/user', [
+        return array_map(function ($e) { return MustacheProvider::get()->render('custom/row/user', [
             'edit' => $this->user->has_rights,
             'user' => $e,
-        ]); }, User::get_all());
+        ]); }, User::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
     }
 }
 

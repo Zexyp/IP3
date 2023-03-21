@@ -1,2 +1,7 @@
 ErrorDocument 404 /errors/404.php
 ErrorDocument 500 /errors/500.php
+
+Redirect /employee/index.php /employee/list.php
+Redirect /key/index.php /key/list.php
+Redirect /room/index.php /room/list.php
+Redirect /user/index.php /user/list.php

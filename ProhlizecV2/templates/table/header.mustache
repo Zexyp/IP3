@@ -1,0 +1,15 @@
+<th scope="col">
+    <div class="shrinky-box p-2 w-100">
+        <span>{{name}}</span>
+        <div class="float-end">
+            <a class="ps-1
+            {{^sort_a}}link-primary{{/sort_a}}
+            {{#sort_a}}link-secondary{{/sort_a}}
+            " href="./{{^sort_a}}?sort={{sort_id}}-a{{/sort_a}}"><i class="bi bi-arrow-down"></i></a>
+            <a class="pe-1
+            {{^sort_d}}link-primary{{/sort_d}}
+            {{#sort_d}}link-secondary{{/sort_d}}
+            " href="./{{^sort_d}}?sort={{sort_id}}-d{{/sort_d}}"><i class="bi bi-arrow-up"></i></a>
+        </div>
+    </div>
+</th>

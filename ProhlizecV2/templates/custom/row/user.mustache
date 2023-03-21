@@ -1,0 +1,13 @@
+<tr class="glow-hover-outer-muted" style="cursor: pointer;" onclick="(function() { window.location.href = 'view.php' })()">
+    <td>{{user.username}}</td>
+    <td class="text-end">
+    {{#user.has_rights}}<i class="bi bi-check"></i>{{/user.has_rights}}
+    {{^user.has_rights}}<i class="bi bi-x"></i>{{/user.has_rights}}
+    </td>
+    {{#edit}}
+    <td class="text-end">
+        <a class="px-2 link-primary" href="#"><i class="bi bi-pencil-square"></i></a>
+        <a class="mx-2 link-danger" href="#"><i class="bi bi-x-lg"></i></a>
+    </td>
+    {{/edit}}
+</tr>

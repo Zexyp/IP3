@@ -24,7 +24,8 @@ class LogoutPage extends AuthenticatedPage
 
     protected function html_main(): string
     {
-        return MustacheProvider::get()->render('logout');
+        // lol, i know, it will be never seen
+        return MustacheProvider::get()->render('authentication/logout');
     }
 }
 

@@ -127,4 +127,5 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `rights`) VALUES
 (1,	'Admin',	'5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',	TRUE),
-(2,	'User',	'5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',	FALSE);
+(2,	'User',	'5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',	FALSE),
+(3, 'sussy', '3f8c49ce280206ab28f91f55b0a79db98e8366ef76efb951649b696d14f59bcc', TRUE);
