@@ -60,8 +60,10 @@ class LoginPage extends Page
     protected function html_head(): string
     {
         return MustacheProvider::get()->render('head', ['title' => $this->title, 'custom_style' => '
-        body {
+        html {
             background-image: url("/public/img/login.png");
+            background-position: bottom;
+            background-repeat: no-repeat;
             background-size: cover;
         }']);
     }

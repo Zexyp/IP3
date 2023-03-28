@@ -36,17 +36,18 @@
         {{/user}}
         {{^user}}
         <div>
-            <a href="
             {{^fix_login}}
-            /login.php
-            {{/fix_login}}
-            {{#fix_login}}
-            https://youtu.be/watch?v=dQw4w9WgXcQ
-            {{/fix_login}}
-            " class="btn btn-outline-light mx-2 glow-hover">
+            <a href="/login.php" class="btn btn-outline-light mx-2 glow-hover">
                 Login
                 <i class="bi bi-box-arrow-in-right"></i>
             </a>
+            {{/fix_login}}
+            {{#fix_login}}
+            <a title="This is not a bug, it's a feature..." href="https://youtu.be/watch?v=dQw4w9WgXcQ" class="btn btn-outline-light mx-2 glow-hover">
+                Login ( ͡° ͜ʖ ͡°)
+            </a>
+            {{/fix_login}}
+
         </div>
         {{/user}}
     </div>

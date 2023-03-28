@@ -23,9 +23,18 @@ class IndexPage extends Page
     protected function html_head(): string
     {
         return MustacheProvider::get()->render('head', ['title' => $this->title, 'custom_style' => '
-        body {
+        html {
             background-image: url("/public/img/haj.webp");
+            background-position: top;
+            background-repeat: no-repeat;
             background-size: cover;
+        }
+        
+        body {
+            backdrop-filter: blur(4px);
+            height: 100vh;
+            width: 100%;
+            margin: 0;
         }']);
     }
 
