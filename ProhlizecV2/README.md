@@ -1,7 +1,13 @@
 # Browse
 Very funny nudity inspired database browser.
 
-## Installation
+## Initial Setup
+
+### Libraries
+Use the following command to get all the dependencies.
+```
+composer update
+```
 
 ### Configuration
 There is a file called `template.json` in the `config` directory.

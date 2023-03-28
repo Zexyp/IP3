@@ -1,0 +1,7 @@
+<label class="form-label" for="username">Username</label>
+<input class="form-control" type="text" id="username" name="username" value="{{user.username}}" required/>
+<label class="form-label" for="password">Password</label>
+<input class="form-control" type="password" id="password" name="password" value=""/>
+<label class="form-check-label" for="has_rights">Has Rights</label>
+<br>
+<input class="form-check-input" type="checkbox" id="has_rights" name="has_rights" value="1" {{#user.has_rights}}checked{{/user.has_rights}}/>

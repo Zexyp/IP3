@@ -6,6 +6,7 @@
 
     --navbarer-height: 96px;
     --footerer-height: 64px;
+    --link-transition-duration: .15s;
 
     --bs-body-color: #adb5bd;
     --bs-body-color-rgb: 173,181,189;
@@ -123,12 +124,43 @@ nav, footer {
     border-width: var(--bs-border-width);
 }
 
-.form-control, .form-control:focus {
+.form-control {
     border-radius: 0;
     border-color: var(--bs-border-color);
     border-width: var(--bs-border-width);
     background-color: var(--bs-dark);
     color: var(--bs-white);
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    background-color: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+.form-select {
+    border-radius: 0;
+    border-color: var(--bs-border-color);
+    border-width: var(--bs-border-width);
+    background-color: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+.form-check-input {
+    border-radius: 0;
+    border-color: var(--bs-border-color);
+    border-width: var(--bs-border-width);
+    background-color: var(--bs-dark);
+    color: var(--bs-white);
+    font-size: 1em;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0;
+}
+
+.form-label:not(:first-child) {
+    margin-top: 1em;
 }
 
 .alert {
@@ -194,7 +226,7 @@ nav, footer {
 
 .link-primary {
     color: #63D2FF!important; /*4898BA*/
-    transition: .2s;
+    transition: var(--link-transition-duration);
 }
 
 .link-primary:focus, .link-primary:hover {
@@ -203,7 +235,7 @@ nav, footer {
 
 .link-secondary {
     color: #6c757d!important;
-    transition: .2s;
+    transition: var(--link-transition-duration);
 }
 
 .link-secondary:focus, .link-secondary:hover {
@@ -212,7 +244,7 @@ nav, footer {
 
 .link-success {
     color: #24B06F!important;
-    transition: .2s;
+    transition: var(--link-transition-duration);
 }
 
 .link-success:focus, .link-success:hover {
@@ -221,7 +253,7 @@ nav, footer {
 
 .link-danger {
     color: #ff4657 !important;
-    transition: .2s;
+    transition: var(--link-transition-duration);
 }
 
 .link-danger:focus, .link-danger:hover {
@@ -230,7 +262,7 @@ nav, footer {
 
 .link-warning {
     color: #ffc107!important;
-    transition: .2s;
+    transition: var(--link-transition-duration);
 }
 
 .link-warning:focus, .link-warning:hover {
@@ -238,17 +270,17 @@ nav, footer {
 }
 
 .link-info {
-    color: #D17CFF!important;/*AA63CE*/
-    transition: .2s;
+    color: #B97CFF!important;/*AA63CE*/
+    transition: var(--link-transition-duration);
 }
 
 .link-info:focus, .link-info:hover {
-    color: #9157B2!important;
+    color: #9263CC!important;
 }
 
 .link-light {
     color: #f8f9fa!important;
-    transition: .2s;
+    transition: var(--link-transition-duration);
 }
 
 .link-light:focus, .link-light:hover {

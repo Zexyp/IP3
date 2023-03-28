@@ -2,8 +2,8 @@
 
 require_once "../bootstrap.php";
 
-use Core\Pages\AuthenticatedPage;
-use Core\Providers\MustacheProvider;
+use Browse\Pages\AuthenticatedPage;
+use Browse\Providers\MustacheProvider;
 
 class LogoutPage extends AuthenticatedPage
 {
@@ -14,7 +14,7 @@ class LogoutPage extends AuthenticatedPage
         parent::prepare();
 
         session_destroy();
-        $this->user = null;
+        $this->logged_user = null;
     }
 
     protected function http_headers(): void

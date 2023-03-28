@@ -1,0 +1,14 @@
+<label class="form-label" for="employee">Employee</label>
+<select class="form-select" id="employee" name="employee" required>
+    <option value="" disabled selected hidden>Choose...</option>
+    {{#employees}}
+    <option {{#selected}}selected{{/selected}} value="{{employee_id}}">{{name}} {{surname}}</option>
+    {{/employees}}
+</select>
+<label class="form-label" for="room">Room</label>
+<select class="form-select" id="room" name="room" required>
+    <option value="" disabled selected hidden>Choose...</option>
+    {{#rooms}}
+    <option {{#selected}}selected{{/selected}} value="{{room_id}}">{{name}} ({{no}})</option>
+    {{/rooms}}
+</select>

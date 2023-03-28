@@ -1,0 +1,23 @@
+<label class="form-label" for="name">Name</label>
+<input class="form-control" type="text" id="name" name="name" value="{{employee.name}}"/>
+<label class="form-label" for="surname">Surname</label>
+<input class="form-control" type="text" id="surname" name="surname" value="{{employee.surname}}"/>
+<label class="form-label" for="job">Job</label>
+<input class="form-control" type="text" id="job" name="job" value="{{employee.job}}">
+<label class="form-label" for="wage">Wage</label>
+<input class="form-control" type="number" id="wage" name="wage" value="{{employee.wage}}" required/>
+<label class="form-label" for="room">Room</label>
+<select class="form-select" id="room" name="room" required>
+    <option value="" disabled selected hidden>Choose...</option>
+    {{#rooms}}
+    <option {{#selected}}selected{{/selected}} value="{{room_id}}">{{name}} ({{no}})</option>
+    {{/rooms}}
+</select>
+<label class="form-label">Keys</label>
+<div>
+    {{#keys}}
+    <input class="form-check-input" id="key_{{room_id}}" type="checkbox" name="keys[]" value="{{room_id}}" {{#checked}}checked{{/checked}}/>
+    <label class="form-check-label" for="key_{{room_id}}">{{name}} ({{no}})</label>
+    <br>
+    {{/keys}}
+</div>

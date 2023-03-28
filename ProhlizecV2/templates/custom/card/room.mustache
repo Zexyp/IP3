@@ -1,0 +1,18 @@
+<dt>No</dt>
+<dd>{{room.no}}</dd>
+<dt>Name</dt>
+<dd>{{room.name}}</dd>
+<dt>Phone</dt>
+<dd>{{room.phone}}</dd>
+<dt>Employees</dt>
+{{#employees}}
+<dd>
+    <a class="link-info" href="../employee/view.php?id={{employee_id}}">{{name}} {{surname}}</a>
+</dd>
+{{/employees}}
+<dt>Keys</dt>
+{{#keys}}
+<dd>
+    <a class="link-info" href="../employee/view.php?id={{employee_id}}">{{name}} {{surname}}</a>
+</dd>
+{{/keys}}

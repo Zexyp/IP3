@@ -4,9 +4,9 @@
 
 require_once "../bootstrap.php";
 
-use Core\Exceptions\BadRequestException;
-use Core\Pages\Page;
-use Core\Providers\MustacheProvider;
+use Browse\Exceptions\BadRequestException;
+use Browse\Pages\Page;
+use Browse\Providers\MustacheProvider;
 
 class LoginPage extends Page
 {
@@ -17,7 +17,7 @@ class LoginPage extends Page
     protected bool $error = false;
     protected bool $success = false;
     protected bool $already = false;
-    protected ?User $user = null;
+    protected ?Users $user = null;
 
     protected function prepare(): void
     {
@@ -25,9 +25,9 @@ class LoginPage extends Page
 
         if (isset($_SESSION['user_id']))
         {
-            if (User::exists($_SESSION['user_id']))
+            if (Users::exists($_SESSION['user_id']))
             {
-                $this->user = User::get($_SESSION['user_id']);
+                $this->user = Users::get($_SESSION['user_id']);
                 $this->already = true;
             }
         }
@@ -38,7 +38,7 @@ class LoginPage extends Page
                 throw new BadRequestException();
 
             $this->username = $_POST['username'];
-            $user = User::get_login($_POST['username'], hash('sha256', ($_POST['password'])));
+            $user = Users::get_login($_POST['username'], hash('sha256', $_POST['password']));
 
             if ($user === null) {
                 $this->error = true;
@@ -88,7 +88,7 @@ class LoginPage extends Page
 
     protected function html_header(): string
     {
-        return MustacheProvider::get()->render('header', ['fix_login' => true]);
+        return MustacheProvider::get()->render('header', ['fix_login' => true, 'user' => $this->user]);
     }
 }
 

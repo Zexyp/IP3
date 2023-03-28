@@ -2,10 +2,10 @@
 
 require_once "../../bootstrap.php";
 
-use Core\Pages\TablePage;
-use Core\Providers\MustacheProvider;
+use Browse\Pages\TablePage;
+use Browse\Providers\MustacheProvider;
 
-class RoomsPage extends TablePage {
+class ListRoomPage extends TablePage {
     protected string $title = 'Rooms';
 
     protected string $heading = 'Rooms';
@@ -24,14 +24,17 @@ class RoomsPage extends TablePage {
         ]
     ];
 
-    protected function html_table_rows(): array
+    protected function get_table_data(): array
     {
-        return array_map(function ($e) { return MustacheProvider::get()->render('custom/row/room', [
-            'edit' => $this->user->has_rights,
-            'room' => $e,
-        ]); }, Room::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
+        return array_map(function ($e) {
+            return [
+                'data' => MustacheProvider::get()->render('custom/row/room', [
+                    'room' => $e]),
+                'id' => $e->room_id
+            ]; },
+            Rooms::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
     }
 }
 
-$page = new RoomsPage();
+$page = new ListRoomPage();
 $page->render();

@@ -2,10 +2,10 @@
 
 require_once "../../bootstrap.php";
 
-use Core\Pages\TablePage;
-use Core\Providers\MustacheProvider;
+use Browse\Pages\TablePage;
+use Browse\Providers\MustacheProvider;
 
-class EmployeesPage extends TablePage {
+class ListEmployeePage extends TablePage {
     protected string $title = 'Employees';
 
     protected string $heading = 'Employees';
@@ -32,15 +32,19 @@ class EmployeesPage extends TablePage {
         ]
     ];
 
-    protected function html_table_rows(): array
+    protected function get_table_data(): array
     {
-        return array_map(function ($e) { return MustacheProvider::get()->render('custom/row/employee', [
-            'edit' => $this->user->has_rights,
-            'employee' => $e,
-            'room' => $e->get_room(),
-        ]); }, Employee::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
+        return array_map(function ($e) {
+            return [
+                'data' => MustacheProvider::get()->render('custom/row/employee', [
+                    'edit' => $this->logged_user->has_rights,
+                    'employee' => $e,
+                    'room' => $e->get_room()]),
+                'id' => $e->employee_id
+            ]; },
+            Employees::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
     }
 }
 
-$page = new EmployeesPage();
+$page = new ListEmployeePage();
 $page->render();

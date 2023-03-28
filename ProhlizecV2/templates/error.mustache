@@ -1,6 +1,17 @@
-<div class="shrinky-box w-50 p-2 m-2 px-4 mt-3">
+<div style="min-width: 50%;" class="shrinky-box p-2 m-2 px-4 mt-3">
     <h1 class="display-1 glow-text-flicker">{{code}}</h1>
     <p class="display-5 glow-text">{{message}}</p>
+
+    {{#debug}}
+    <div class="p-2 border">
+    <h3>Exception thrown</h3>
+    {{#trace}}
+    <span>at {{function}} in {{file}}:line {{line}}</span>
+    <br>
+    {{/trace}}
+    </div>
+    {{/debug}}
+
     <a href="/" class="btn btn-outline-light my-2 glow-hover">
         Try Going Home
         <i class="bi bi-house"></i>

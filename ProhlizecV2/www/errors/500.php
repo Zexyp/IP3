@@ -2,8 +2,8 @@
 
 require_once "../../bootstrap.php";
 
-use Core\Pages\ErrorPage;
-use Core\Exceptions\InternalServerErrorException;
+use Browse\Pages\ErrorPage;
+use Browse\Exceptions\InternalServerErrorException;
 
 $page = new ErrorPage(new InternalServerErrorException());
 $page->render();

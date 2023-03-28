@@ -2,34 +2,37 @@
 
 require_once "../../bootstrap.php";
 
-use Core\Pages\TablePage;
-use Core\Providers\MustacheProvider;
+use Browse\Pages\TablePage;
+use Browse\Providers\MustacheProvider;
 
-class KeysPage extends TablePage {
+class ListKeyPage extends TablePage {
     protected string $title = 'Keys';
 
     protected string $heading = 'Keys';
     protected array $columns = [
         [
-            'name' => 'Room',
-            'id' => 'room'
-        ],
-        [
             'name' => 'Employee',
             'id' => 'employee'
+        ],
+        [
+            'name' => 'Room',
+            'id' => 'room'
         ]
     ];
 
-    protected function html_table_rows(): array
+    protected function get_table_data(): array
     {
-        return array_map(function ($e) { return MustacheProvider::get()->render('custom/row/key', [
-            'edit' => $this->user->has_rights,
-            'key' => $e,
-            'room' => $e->get_room(),
-            'employee' => $e->get_employee(),
-        ]); }, Key::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
+        return array_map(function ($e) {
+            return [
+                'data' => MustacheProvider::get()->render('custom/row/key', [
+                    'key' => $e,
+                    'room' => $e->get_room(),
+                    'employee' => $e->get_employee()]),
+                'id' => $e->key_id
+            ]; },
+            Keys::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
     }
 }
 
-$page = new KeysPage();
+$page = new ListKeyPage();
 $page->render();

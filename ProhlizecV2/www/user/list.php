@@ -2,10 +2,10 @@
 
 require_once "../../bootstrap.php";
 
-use Core\Pages\TablePage;
-use Core\Providers\MustacheProvider;
+use Browse\Pages\TablePage;
+use Browse\Providers\MustacheProvider;
 
-class UsersPage extends TablePage {
+class ListUserPage extends TablePage {
     protected string $title = 'Users';
 
     protected string $heading = 'Users';
@@ -20,14 +20,17 @@ class UsersPage extends TablePage {
         ]
     ];
 
-    protected function html_table_rows(): array
+    protected function get_table_data(): array
     {
-        return array_map(function ($e) { return MustacheProvider::get()->render('custom/row/user', [
-            'edit' => $this->user->has_rights,
-            'user' => $e,
-        ]); }, User::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
+        return array_map(function ($e) {
+            return [
+                'data' => MustacheProvider::get()->render('custom/row/user', [
+                    'user' => $e,]),
+                'id' => $e->user_id
+            ]; },
+            Users::get_all(order: $this->sortby != null ? [[$this->sortby, $this->sortord]] : null));
     }
 }
 
-$page = new UsersPage();
+$page = new ListUserPage();
 $page->render();

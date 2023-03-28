@@ -2,8 +2,8 @@
 
 require_once "../../bootstrap.php";
 
-use Core\Pages\ErrorPage;
-use Core\Exceptions\NotFoundException;
+use Browse\Pages\ErrorPage;
+use Browse\Exceptions\NotFoundException;
 
 $page = new ErrorPage(new NotFoundException());
 $page->render();

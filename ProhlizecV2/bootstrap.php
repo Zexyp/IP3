@@ -21,7 +21,7 @@ spl_autoload_register(
     }
 );
 
-use Core\AppConfig;
+use Browse\AppConfig;
 use Tracy\Debugger;
 
 if (AppConfig::get('debug'))
