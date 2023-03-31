@@ -12,11 +12,18 @@ class EditRoomPage extends EditPage {
     protected Rooms $room;
     protected array $keys;
 
+    protected string $error = '';
+
     protected function html_form(): string
     {
         return MustacheProvider::get()->render('custom/form/room', [
             'room' => $this->room,
         ]);
+    }
+
+    protected function html_alert(): string
+    {
+        return $this->error;
     }
 
     protected function data_get()
@@ -46,7 +53,7 @@ class EditRoomPage extends EditPage {
 
         $this->room->no = self::filter(INPUT_POST, 'no', FILTER_VALIDATE_INT, true);
         $this->room->name = self::filter(INPUT_POST, 'name', required: true);
-        $this->room->phone = self::filter(INPUT_POST, 'phone', FILTER_VALIDATE_INT, true);
+        $this->room->phone = self::filter(INPUT_POST, 'phone', FILTER_VALIDATE_INT, false);
     }
 
     protected function validate_data(): bool

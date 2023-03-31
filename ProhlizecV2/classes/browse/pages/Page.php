@@ -31,7 +31,11 @@ abstract class Page
             throw new BadRequestException();
 
         if ($filtered === false)
+        {
+            if (!$required)
+                return null;
             throw new UnprocessableContentException();
+        }
 
         return $filtered;
     }

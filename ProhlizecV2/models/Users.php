@@ -20,12 +20,17 @@ class Users {
         return count($stmt->fetchAll()) > 0;
     }
 
-    public static function exists_username(string $username) : bool {
+    public static function exists_username(string $username, ?int $except = null) : bool {
         $pdo = PDOProvider::get();
 
-        $query = 'SELECT * FROM `' . self::$table . '` WHERE username = :username';
+        $query = 'SELECT * FROM `' . self::$table . '` WHERE username = :username' . ($except ? ' AND user_id != :user_id' : '');
         $stmt = $pdo->prepare($query);
-        $stmt->execute([':username' => $username]);
+        $data = [
+            ':username' => $username,
+        ];
+        if ($except)
+            $data[':user_id'] = $except;
+        $stmt->execute($data);
 
         return count($stmt->fetchAll()) > 0;
     }
@@ -56,16 +61,6 @@ class Users {
             return null;
 
         return self::instance_from_data($data);
-    }
-
-    public static function get_all_username(string $username) : array {
-        $pdo = PDOProvider::get();
-
-        $query = 'SELECT * FROM `' . self::$table . '` WHERE username = :username';
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([':username' => $username]);
-
-        return array_map([__CLASS__, 'instance_from_data'], $stmt->fetchAll());
     }
 
     public static function get_all(?array $order = null) : array {

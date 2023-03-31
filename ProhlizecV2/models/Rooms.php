@@ -34,6 +34,21 @@ class Rooms {
         return self::instance_from_data($data);
     }
 
+    public static function exists_no(string $no, ?int $except = null) : bool {
+        $pdo = PDOProvider::get();
+
+        $query = 'SELECT * FROM `' . self::$table . '` WHERE no = :no' . ($except ? ' AND room_id != :room_id' : '');
+        $stmt = $pdo->prepare($query);
+        $data = [
+            ':no' => $no,
+        ];
+        if ($except)
+            $data[':room_id'] = $except;
+        $stmt->execute($data);
+
+        return count($stmt->fetchAll()) > 0;
+    }
+
     public static function get_all(?array $order = null) : array {
         $pdo = PDOProvider::get();
         $stmt = $pdo->query('SELECT * FROM `' . self::$table . '`' .
@@ -59,7 +74,7 @@ class Rooms {
     public static function update(Rooms $room) {
         $pdo = PDOProvider::get();
 
-        $query = 'UPDATE `' . self::$table . '` SET name = :name, surname = :surname, job = :job, wage = :wage, room = :room WHERE room_id = :room_id';
+        $query = 'UPDATE `' . self::$table . '` SET name = :name, no = :no, phone = :phone WHERE room_id = :room_id';
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([

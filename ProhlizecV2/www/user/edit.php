@@ -58,17 +58,10 @@ class EditUserPage extends EditPage {
 
     protected function validate_data(): bool
     {
-        if (Users::exists_username($this->user->username)) {
-            if ($this->mode == self::MODE_CREATE) {
-                $this->error .= MustacheProvider::get()->render('alert', ['alert_type' => 'alert-danger', 'message' => 'Login already used!']);
-                return false;
-            }
-            if ($this->mode == self::MODE_UPDATE and Users::get_all_username($this->user->username)[0]->user_id != $this->user->user_id) {
-                $this->error .= MustacheProvider::get()->render('alert', ['alert_type' => 'alert-danger', 'message' => 'Login already used!']);
-                return false;
-            }
+        if (Users::exists_username($this->user->username, $this->user->user_id)) {
+            $this->error .= MustacheProvider::get()->render('alert', ['alert_type' => 'alert-danger', 'message' => 'Login already used!']);
+            return false;
         }
-
 
         if (!$this->user->password) {
             $this->error .= MustacheProvider::get()->render('alert', ['alert_type' => 'alert-danger', 'message' => 'Password needs to be set!']);
