@@ -8,5 +8,5 @@
         "password": "",
         "charset": ""
     },
-    "debug": true
+    "debug": false
 }
