@@ -5,5 +5,4 @@ Email username: `sprypa`
 This is a repository with my school homeworks...
 
 ### List of readmes I haven't forgotten to put here
-- [Rekurze](/Rekurze/Rekurze/README.md)
-- [Sorty](/Sorty/README.md)
+- [Browse (ProhlizecV2)](/ProhlizecV2/README.md)
