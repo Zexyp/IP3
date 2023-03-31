@@ -5,12 +5,14 @@
 <dt>Phone</dt>
 <dd>{{room.phone}}</dd>
 <dt>Employees</dt>
+{{^employees}}-{{/employees}}
 {{#employees}}
 <dd>
     <a class="link-info" href="../employee/view.php?id={{employee_id}}">{{name}} {{surname}}</a>
 </dd>
 {{/employees}}
 <dt>Keys</dt>
+{{^keys}}-{{/keys}}
 {{#keys}}
 <dd>
     <a class="link-info" href="../employee/view.php?id={{employee_id}}">{{name}} {{surname}}</a>

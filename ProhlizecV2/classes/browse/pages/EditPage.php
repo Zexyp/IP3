@@ -39,14 +39,18 @@ abstract class EditPage extends AdminPage
             $this->id = self::filter(INPUT_GET, 'id', FILTER_VALIDATE_INT, true);
         }
 
-        $this->poll(); // just checkin'
+        switch ($this->mode) {
+            case self::MODE_UPDATE: $this->title = $this->heading = 'Edit'; break;
+            case self::MODE_CREATE: $this->title = $this->heading = 'Create'; break;
+            case self::MODE_DELETE: $this->title = $this->heading = 'Delete'; break;
+        }
+
+        $this->title .= ': ' . $this->get_object_name();
+
+        if (!$this->poll()) // just checkin'
+            return;
 
         if (in_array($this->mode, [self::MODE_UPDATE, self::MODE_CREATE])) {
-            switch ($this->mode) {
-                case self::MODE_UPDATE: $this->title = $this->heading = "Edit"; break;
-                case self::MODE_CREATE: $this->title = $this->heading = "Create"; break;
-            }
-
             switch ($_SERVER['REQUEST_METHOD']) {
                 case 'GET': $this->data_get(); break;
                 case 'POST':
@@ -70,25 +74,27 @@ abstract class EditPage extends AdminPage
 
     protected function html_main(): string
     {
-        if ($this->mode == self::MODE_UPDATE or $this->mode == self::MODE_CREATE) {
-            return MustacheProvider::get()->render('edit', [
-                'alert' => $this->html_alert(),
-                'heading' => $this->heading,
-                'form' => $this->html_form(),
-                'id' => $this->id,
-                'create' => $this->mode == self::MODE_CREATE
-            ]);
-        }
-        else
-            return 'lul';
+        return MustacheProvider::get()->render('edit', [
+            'alert' => $this->html_alert(),
+            'heading' => $this->heading,
+            'name' => $this->get_object_name(),
+            'form' => in_array($this->mode, [self::MODE_CREATE, self::MODE_UPDATE]) ? $this->html_form() : '',
+            'id' => $this->id,
+            'create' => $this->mode == self::MODE_CREATE,
+            'delete' => $this->mode == self::MODE_DELETE,
+        ]);
     }
 
     protected function html_alert(): string {
         return '';
     }
 
-    protected function poll() {
+    protected function poll(): bool {
+        return true;
+    }
 
+    protected function get_object_name(): string {
+        return '';
     }
 
     protected abstract function html_form(): string;

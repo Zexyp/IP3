@@ -52,7 +52,7 @@ class EditRoomPage extends EditPage {
         }
 
         $this->room->no = self::filter(INPUT_POST, 'no', FILTER_VALIDATE_INT, true);
-        $this->room->name = self::filter(INPUT_POST, 'name', required: true);
+        $this->room->name = self::filter(INPUT_POST, 'name', required: false);
         $this->room->phone = self::filter(INPUT_POST, 'phone', FILTER_VALIDATE_INT, false);
     }
 
@@ -83,13 +83,39 @@ class EditRoomPage extends EditPage {
         self::redirect('list.php');
     }
 
-    protected function poll()
+    protected function poll(): bool
     {
         if (!in_array($this->mode, [self::MODE_UPDATE, self::MODE_DELETE]))
-            return;
+            return true;
 
         if (!Rooms::exists($this->id))
             throw new NotFoundException();
+
+        if ($this->mode != self::MODE_DELETE)
+            return true;
+
+        $keys = Keys::of_room($this->id);
+        foreach ($keys as $key) {
+            $employee = $key->get_employee();
+            $this->error .= MustacheProvider::get()->render('alert', [
+                'alert_type' => 'alert-danger',
+                'message_before' => 'Employee ',
+                'message_after' => ' uses this room!',
+                'link' => [
+                    'href' => "../employee/view.php?id=$employee->employee_id",
+                    'title' => "$employee->name $employee->surname",
+                ]]);
+        }
+        return count($keys) == 0;
+    }
+
+    protected function get_object_name(): string
+    {
+        if (!$this->id) return 'Room';
+        $obj = Rooms::get($this->id);
+        if (!$obj)
+            return '';
+        return "{$obj->name} ({$obj->no})";
     }
 }
 

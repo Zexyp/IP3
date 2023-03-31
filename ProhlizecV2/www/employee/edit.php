@@ -56,11 +56,11 @@ class EditEmployeePage extends EditPage {
             default: assert(false); break;
         }
 
-        $this->employee->name = self::filter(INPUT_POST, 'name', required: true);
-        $this->employee->surname = self::filter(INPUT_POST, 'surname', required: true);
-        $this->employee->job = self::filter(INPUT_POST, 'job', required: true);
+        $this->employee->name = self::filter(INPUT_POST, 'name', required: false);
+        $this->employee->surname = self::filter(INPUT_POST, 'surname', required: false);
+        $this->employee->job = self::filter(INPUT_POST, 'job', required: false);
         $this->employee->wage = self::filter(INPUT_POST, 'wage', FILTER_VALIDATE_INT, true);
-        $this->employee->room = self::filter(INPUT_POST, 'room', FILTER_VALIDATE_INT, true);
+        $this->employee->room = self::filter(INPUT_POST, 'room', FILTER_VALIDATE_INT, false);
 
         $this->keys = self::filter(INPUT_POST, 'keys', FILTER_VALIDATE_INT, false, FILTER_REQUIRE_ARRAY) ??
             [];
@@ -125,13 +125,24 @@ class EditEmployeePage extends EditPage {
         self::redirect('list.php');
     }
 
-    protected function poll()
+    protected function poll(): bool
     {
         if (!in_array($this->mode, [self::MODE_UPDATE, self::MODE_DELETE]))
-            return;
+            return true;
 
         if (!Employees::exists($this->id))
             throw new NotFoundException();
+
+        return true;
+    }
+
+    protected function get_object_name(): string
+    {
+        if (!$this->id) return 'Employee';
+        $obj = Employees::get($this->id);
+        if (!$obj)
+            return '';
+        return "{$obj->name} {$obj->surname}";
     }
 }
 

@@ -1,20 +1,26 @@
 <div class="m-2 p-2">
     <h1 class="display-5 ms-2 mt-2 glow-text">{{heading}}</h1>
+    <h2 style="font-size: 2em" class="display-5 ms-2 mt-2 glow-text">{{name}}</h2>
     <div class="w-50">
-        <form method="post">
-            <div class="m-2 p-4 shrinky-box w-100">
-                <a href="list.php" class="btn text-white glow-hover-outer me-4" onclick="return confirm('All changes will be lost! Do you want to continue?')">Back To List <i class="bi bi-box-arrow-left"></i></a>
-                <input type="submit" class="btn btn-outline-light glow-hover me-4" value="Save"></input>
-                {{^create}}
-                <a href="?id={{id}}&mode=delete" class="btn btn-outline-light glow-hover-outer float-end link-danger" onclick="return confirm('Are you sure you want to delete this record?')"><i class="bi bi-x-lg"></i></a>
-                {{/create}}
-            </div>
-            <div class="m-2 w-100">
-                {{{alert}}}
-            </div>
-            <div class="m-2 p-2 border w-100">
+        <div class="m-2 p-4 shrinky-box w-100">
+            <a href="list.php" class="btn text-white glow-hover-outer me-4" {{^delete}}onclick="return confirm('All changes will be lost! Do you want to continue?')"{{/delete}}>Back To List <i class="bi bi-box-arrow-left"></i></a>
+            {{^delete}}
+            <a onclick="document.getElementById('submit').click();" type="submit" class="btn btn-outline-light glow-hover me-4">Save</a>
+            {{^create}}
+            <a href="?id={{id}}&mode=delete" class="btn btn-outline-light glow-hover-outer float-end link-danger" onclick="return confirm('Are you sure you want to delete this record?')"><i class="bi bi-x-lg"></i></a>
+            {{/create}}
+            {{/delete}}
+        </div>
+        <div class="m-2 w-100">
+            {{{alert}}}
+        </div>
+        {{#form}}
+        <div class="m-2 p-2 border w-100">
+            <form method="post" autocomplete="off" id="form">
                 {{{form}}}
-            </div>
-        </form>
+                <input hidden id="submit" type="submit"/>
+            </form>
+        </div>
+        {{/form}}
     </div>
 </div>

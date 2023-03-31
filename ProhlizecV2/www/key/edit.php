@@ -99,13 +99,26 @@ class EditKeyPage extends EditPage {
         self::redirect('list.php');
     }
 
-    protected function poll()
+    protected function poll(): bool
     {
         if (!in_array($this->mode, [self::MODE_UPDATE, self::MODE_DELETE]))
-            return;
+            return true;
 
         if (!Keys::exists($this->id))
             throw new NotFoundException();
+
+        return true;
+    }
+
+    protected function get_object_name(): string
+    {
+        if (!$this->id) return 'Key';
+        $obj = Keys::get($this->id);
+        if (!$obj)
+            return '';
+        $employee = $obj->get_employee();
+        $room = $obj->get_room();
+        return "{$employee->name} {$employee->surname}'s key to {$room->name} ({$room->no})";
     }
 }
 

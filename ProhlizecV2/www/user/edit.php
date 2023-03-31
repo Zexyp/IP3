@@ -95,13 +95,24 @@ class EditUserPage extends EditPage {
         self::redirect('list.php');
     }
 
-    protected function poll()
+    protected function poll(): bool
     {
         if (!in_array($this->mode, [self::MODE_UPDATE, self::MODE_DELETE]))
-            return;
+            return true;
 
         if (!Users::exists($this->id))
             throw new NotFoundException();
+
+        return true;
+    }
+
+    protected function get_object_name(): string
+    {
+        if (!$this->id) return 'User';
+        $obj = Users::get($this->id);
+        if (!$obj)
+            return '';
+        return "{$obj->username}";
     }
 }
 

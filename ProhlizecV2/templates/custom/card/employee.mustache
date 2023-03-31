@@ -9,6 +9,7 @@
 <dt>Room</dt>
 <dd><a class="link-info" href="../room/view.php?id={{room.room_id}}">{{room.name}} ({{room.no}})</a></dd>
 <dt>Keys</dt>
+{{^keys}}-{{/keys}}
 {{#keys}}
 <dd>
     <a class="link-info" href="../room/view.php?id={{room_id}}">{{name}} ({{no}})</a>

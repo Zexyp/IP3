@@ -74,8 +74,8 @@
     color: white;
     text-shadow:
             0 0 25px #fff8,
-            -2.5px 0 20px #f0f,
-            2.5px 0 20px #0ff;
+            -1px 0 20px #f0f,
+            1px 0 20px #0ff;
 }
 
 .glow-text-flicker {
