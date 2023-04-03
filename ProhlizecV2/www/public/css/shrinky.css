@@ -32,14 +32,14 @@
 }
 .shrinky-box:before {
     /* +1 just to be safe */
-    width: calc(100% + var(--shrinky-border) * 2 + 1px);
+    width: calc(100% + var(--shrinky-border) * 2 + 2px);
     height: calc(100% + var(--shrinky-border) * 2);
     z-index: 1;
     transition: height 1s ease, opacity 0.8s ease;
 }
 .shrinky-box:after {
     /* +1 just to be safe */
-    height: calc(100% + var(--shrinky-border) * 2 + 1px);
+    height: calc(100% + var(--shrinky-border) * 2 + 2px);
     width: calc(100% + var(--shrinky-border) * 2);
 
     z-index: 1;
