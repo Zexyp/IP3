@@ -105,6 +105,7 @@ class EditRoomPage extends EditPage {
                     'href' => "../employee/view.php?id=$employee->employee_id",
                     'title' => "$employee->name $employee->surname",
                 ]]);
+            http_response_code(422);
         }
         return count($keys) == 0;
     }
