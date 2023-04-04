@@ -94,6 +94,19 @@ class EditRoomPage extends EditPage {
         if ($this->mode != self::MODE_DELETE)
             return true;
 
+        $employees = Employees::of_room($this->id);
+        foreach ($employees as $employee) {
+            $this->error .= MustacheProvider::get()->render('alert', [
+                'alert_type' => 'alert-danger',
+                'message_before' => 'Employee ',
+                'message_after' => ' lives in this very room!',
+                'link' => [
+                    'href' => "../employee/view.php?id=$employee->employee_id",
+                    'title' => "$employee->name $employee->surname",
+                ]]);
+            http_response_code(422);
+        }
+
         $keys = Keys::of_room($this->id);
         foreach ($keys as $key) {
             $employee = $key->get_employee();
@@ -107,7 +120,7 @@ class EditRoomPage extends EditPage {
                 ]]);
             http_response_code(422);
         }
-        return count($keys) == 0;
+        return !count($employees) && !count($keys);
     }
 
     protected function get_object_name(): string
