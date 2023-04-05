@@ -58,6 +58,14 @@ class EditRoomPage extends EditPage {
 
     protected function validate_data(): bool
     {
+        if (Rooms::exists_no($this->room->no, $this->room->room_id)) {
+            $this->error .= MustacheProvider::get()->render('alert', [
+                'alert_type' => 'alert-danger',
+                'message' => 'No already exists!',
+            ]);
+            return false;
+        }
+
         return true;
     }
 
