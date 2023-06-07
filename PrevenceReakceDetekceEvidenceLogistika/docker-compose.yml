@@ -5,8 +5,12 @@ services:
     db:
         image: mariadb:10.6
         restart: always
+        volumes:
+            -   ./mariadb-data:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: notSecureChangeMe
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - 3306:3306
 
     phpmyadmin:
         image: phpmyadmin

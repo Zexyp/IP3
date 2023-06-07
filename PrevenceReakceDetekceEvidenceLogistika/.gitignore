@@ -1,3 +1,5 @@
+/mariadb-data
+
 /.phpunit.cache
 /node_modules
 /public/build
