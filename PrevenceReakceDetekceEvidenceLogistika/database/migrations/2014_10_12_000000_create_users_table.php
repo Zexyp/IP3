@@ -27,9 +27,41 @@ return new class extends Migration
         DB::table('users')->insert(
             array(
                 'name' => 'admin',
-                'email' => 'pog@poggers',
-                'password' => '$2y$10$7K9Etf67P/v6xFWqvUdbceDGHhfICs2HqVkC0Jdo8zZADnaBQ0Lyu',
-                'role' => 0
+                'email' => 'admin@domain',
+                'password' => '',
+                'role' => Role::ADMIN
+            )
+        );
+        DB::table('users')->insert(
+            array(
+                'name' => 'employee',
+                'email' => 'employee@domain',
+                'password' => '',
+                'role' => Role::EMPLOYEE
+            )
+        );
+        DB::table('users')->insert(
+            array(
+                'name' => 'incomming',
+                'email' => 'incomming@domain',
+                'password' => '',
+                'role' => Role::INCOMMING
+            )
+        );
+        DB::table('users')->insert(
+            array(
+                'name' => 'outcomming',
+                'email' => 'outcomming@domain',
+                'password' => '',
+                'role' => Role::OUTCOMMING
+            )
+        );
+        DB::table('users')->insert(
+            array(
+                'name' => 'responder',
+                'email' => 'responder@domain',
+                'password' => '',
+                'role' => ROLE::RESPONDER
             )
         );
     }
