@@ -20,15 +20,15 @@
                 </div>
             @endif
 
-            @if(in_array(Auth::user()->role, [Role::ADMIN, Role::INCOMMING]))
+            @if(in_array(Auth::user()->role, [Role::ADMIN, Role::INCOMING]))
                 <div class="mb-6">
-                    @include("dashboard.partials.incomming")
+                    @include("dashboard.partials.incoming")
                 </div>
             @endif
 
-            @if(in_array(Auth::user()->role, [Role::ADMIN, Role::OUTCOMMING]))
+            @if(in_array(Auth::user()->role, [Role::ADMIN, Role::OUTCOMING]))
                 <div class="mb-6">
-                    @include("dashboard.partials.outcomming")
+                    @include("dashboard.partials.outcoming")
                 </div>
             @endif
 

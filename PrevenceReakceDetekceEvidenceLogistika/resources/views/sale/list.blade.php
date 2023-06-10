@@ -16,7 +16,7 @@
                         <div class="p-6 text-gray-900 dark:text-gray-100">
 
                             <table class="table-auto w-full">
-                                <thead>
+                                <thead style="border-bottom: 2px solid #8888">
                                 <tr>
                                     <th>Datum</th>
                                     <th>Hmotnost (kg)</th>
@@ -25,10 +25,19 @@
                                 </thead>
                                 <tbody>
                                 @foreach($data as $value)
-                                    <tr>
-                                        <td class="text-center">{{$value->date}}</td>
+                                    <tr style="border-top: 1px solid #8888;">
+                                        <td class="text-center"><a class="underline text-blue-500 hover:text-blue-700" href="{{route('sale.view', [$value->id])}}">{{$value->date}}</td>
                                         <td class="text-center">{{$value->mass}}</td>
                                         <td class="text-center">{{$value->worth}}</td>
+                                        @if(Auth::user()->role == Role::ADMIN)
+                                            <td>
+                                                <form action="{{route('sale.delete', [$value->id])}}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold rounded d-block text-center" style="display: block; height: 1em; width: 1em; line-height: 1em">×</button>
+                                                </form>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

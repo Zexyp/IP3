@@ -16,19 +16,27 @@
                         <div class="p-6 text-gray-900 dark:text-gray-100">
 
                             <table class="table-auto w-full">
-                                <thead>
+                                <thead style="border-bottom: 2px solid #8888">
                                 <tr>
                                     <th>Jméno</th>
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
-                                    <tr>
-                                        <td class="text-center">{{$user->name}}</td>
+                                    <tr style="border-top: 1px solid #8888;">
+                                        <td class="text-center"><a class="underline text-blue-500 hover:text-blue-700" href="{{route('user.view', [$user->id])}}">{{$user->name}}</a></td>
                                         <td class="text-center">{{$user->email}}</td>
                                         <td class="text-center">{{Role::toString($user->role)}}</td>
+                                        <td>
+                                            <form action="{{route('user.delete', [$user->id])}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold rounded d-block text-center" style="display: block; height: 1em; width: 1em; line-height: 1em">×</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

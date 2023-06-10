@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('outcommings', function (Blueprint $table) {
+        Schema::create('outcomings', function (Blueprint $table) {
             $table->id();
             $table->date('date')->default(today());;
             $table->float('mass');
@@ -21,21 +21,21 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('outcommings')->insert(
+        DB::table('outcomings')->insert(
             array(
                 'mass' => 123,
                 'worth' => 123.45,
                 'checked' => true
             )
         );
-        DB::table('outcommings')->insert(
+        DB::table('outcomings')->insert(
             array(
                 'mass' => 123,
                 'worth' => 123.45,
                 'checked' => false
             )
         );
-        DB::table('outcommings')->insert(
+        DB::table('outcomings')->insert(
             array(
                 'mass' => 123,
                 'worth' => 123.45,
@@ -49,6 +49,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('outcommings');
+        Schema::dropIfExists('outcomings');
     }
 };

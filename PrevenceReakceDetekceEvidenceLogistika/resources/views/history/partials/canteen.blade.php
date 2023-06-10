@@ -5,7 +5,7 @@
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 <p>Příjem</p>
                 <br/>
-                <a href="{{route('incomming.list')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <a href="{{route('incoming.list')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Historie příjmu
                 </a>
             </div>
@@ -23,7 +23,7 @@
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 <p>Svoz</p>
                 <br/>
-                <a href="{{route('outcomming.list')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <a href="{{route('outcoming.list')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Historie svozu
                 </a>
             </div>

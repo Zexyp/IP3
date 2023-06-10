@@ -32,9 +32,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Uložit
-            </button>
+            <x-primary-button>{{ __('Uložit') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p
@@ -43,7 +41,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Uloženo.') }}</p>
             @endif
         </div>
     </form>

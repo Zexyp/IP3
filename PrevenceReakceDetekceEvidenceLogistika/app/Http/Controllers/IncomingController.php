@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserUpdateRequest;
-use App\Models\User;
+use App\Http\Requests\IncomingUpdateRequest;
+use App\Models\Incoming;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Mockery\Exception;
 
-class UserController extends Controller
+class IncomingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('user.list', ['users' => User::all()]);
+        return view('incoming.list', ['data' => Incoming::all()]);
     }
 
     /**
@@ -40,41 +40,39 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user): View
+    public function show(Incoming $incoming): View
     {
-        return view('user.view', ['value' => $user]);
+        return view('incoming.view', ['value' => $incoming]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Incoming $incoming): View
     {
-        return view('user.edit', ['value' => $user]);
+        return view('incoming.edit', ['value' => $incoming]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserUpdateRequest $request, User $user): RedirectResponse
+    public function update(IncomingUpdateRequest $request, Incoming $incoming): RedirectResponse
     {
         $data = $request->validated();
-        if (isset($data['password']) && !$data['password'])
-            unset($data['password']);
+        $data['checked'] = isset($data['checked']);
+        $incoming->fill($data);
+        $incoming->save();
 
-        $user->fill($data);
-        $user->save();
-
-        return Redirect::route('user.view', [$user->id])->with('status', 'thingy-updated');
+        return Redirect::route('incoming.view', [$incoming->id])->with('status', 'thingy-updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user): RedirectResponse
+    public function destroy(Incoming $incoming): RedirectResponse
     {
-        $user->delete();
+        $incoming->delete();
 
-        return Redirect::route('users')->with('status', 'thingy-removed');
+        return Redirect::route('incoming.list')->with('status', 'thingy-removed');
     }
 }

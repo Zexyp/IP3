@@ -28,7 +28,7 @@ return new class extends Migration
             array(
                 'name' => 'admin',
                 'email' => 'admin@domain',
-                'password' => '',
+                'password' => '$2y$10$gzAgPsHnC80nO5.rU6vi0uj3d36C7ZPDOB/isqAB2xjraAGmDOcFS',
                 'role' => Role::ADMIN
             )
         );
@@ -36,7 +36,7 @@ return new class extends Migration
             array(
                 'name' => 'employee',
                 'email' => 'employee@domain',
-                'password' => '',
+                'password' => '$2y$10$Qm/kGf6mG5ox9V.IZMZrR.BAvi366JVeR6stb.JDelrVSbeuTM.TG',
                 'role' => Role::EMPLOYEE
             )
         );
@@ -44,23 +44,23 @@ return new class extends Migration
             array(
                 'name' => 'incomming',
                 'email' => 'incomming@domain',
-                'password' => '',
-                'role' => Role::INCOMMING
+                'password' => '$2y$10$OuK9DlskvjNbQR89VFjFiOjxhbdFudIQJGusOyFv1iQOE2Rmw.bay',
+                'role' => Role::INCOMING
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'outcomming',
                 'email' => 'outcomming@domain',
-                'password' => '',
-                'role' => Role::OUTCOMMING
+                'password' => '$2y$10$TfqapheOk9zqWi02RHCAiOvGh4MvhTMtnuyrUKE7MJnxP0XPdLPmy',
+                'role' => Role::OUTCOMING
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'responder',
                 'email' => 'responder@domain',
-                'password' => '',
+                'password' => '$2y$10$cFnvjjP4JRUrCx1iiWUwKe1HvvOLYY8YgW5tj8SI5ujUuvAByPJs2',
                 'role' => ROLE::RESPONDER
             )
         );
