@@ -37,6 +37,15 @@
                             <a href="{{route('sale.edit', [$value->id])}}" class="bg-fuchsia-500 hover:bg-fuchsia-700 text-white font-bold py-2 px-4 rounded">
                                 Upravit
                             </a>
+                            <br>
+                            <br>
+                            <form onclick="return confirm('Opravdu chcete pokračovat?')" action="{{route('sale.delete', [$value->id])}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                    Smazat
+                                </button>
+                            </form>
                         @endif
 
                         @if (session('status') === 'thingy-updated')

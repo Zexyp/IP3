@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UserUpdateRequest extends FormRequest
+class SaleStoreRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,10 +15,9 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'email' => ['email'],
-            'role' => ['between:0,4'],
-            'password' => ['nullable'],
+            'date' => ['date'],
+            'mass' => ['numeric'],
+            'worth' => ['numeric'],
         ];
     }
 }

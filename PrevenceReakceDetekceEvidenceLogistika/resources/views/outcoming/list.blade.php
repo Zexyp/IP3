@@ -33,7 +33,7 @@
                                         <td class="text-center"><input class="{{$value->checked ? 'bg-blue-500' : 'bg-transparent'}} rounded" type="checkbox" disabled {{$value->checked ? 'checked' : ''}}></td>
                                         @if(Auth::user()->role == Role::ADMIN)
                                             <td>
-                                                <form action="{{route('outcoming.delete', [$value->id])}}" method="post">
+                                                <form onclick="return confirm('Opravdu chcete pokračovat?')" action="{{route('outcoming.delete', [$value->id])}}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold rounded d-block text-center" style="display: block; height: 1em; width: 1em; line-height: 1em">×</button>

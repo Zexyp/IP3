@@ -14,18 +14,6 @@
                 </div>
             @endif
 
-            @if(in_array(Auth::user()->role, [Role::INCOMING]))
-                <div class="mb-6">
-                    @include("history.partials.incomming")
-                </div>
-            @endif
-
-            @if(in_array(Auth::user()->role, [Role::OUTCOMING]))
-                <div class="mb-6">
-                    @include("history.partials.outcomming")
-                </div>
-            @endif
-
         </div>
     </div>
 </x-app-layout>

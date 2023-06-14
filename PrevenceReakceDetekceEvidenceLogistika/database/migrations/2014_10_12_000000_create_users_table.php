@@ -42,17 +42,17 @@ return new class extends Migration
         );
         DB::table('users')->insert(
             array(
-                'name' => 'incomming',
-                'email' => 'incomming@domain',
-                'password' => '$2y$10$OuK9DlskvjNbQR89VFjFiOjxhbdFudIQJGusOyFv1iQOE2Rmw.bay',
+                'name' => 'incoming',
+                'email' => 'incoming@domain',
+                'password' => '$2y$10$Yc5GX6GYCtwWyEZcDei8E.QrDX7dcYcgSQCxpxWPMUnvr3OonNat2',
                 'role' => Role::INCOMING
             )
         );
         DB::table('users')->insert(
             array(
-                'name' => 'outcomming',
-                'email' => 'outcomming@domain',
-                'password' => '$2y$10$TfqapheOk9zqWi02RHCAiOvGh4MvhTMtnuyrUKE7MJnxP0XPdLPmy',
+                'name' => 'outcoming',
+                'email' => 'outcoming@domain',
+                'password' => '$2y$10$CyOkvORhmqnLV8syowsfYe57bdM2wFI1VUbVAN8K.bw2uPDd2pBcC',
                 'role' => Role::OUTCOMING
             )
         );

@@ -33,12 +33,34 @@
                         <a href="{{route('incoming.list')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Historie
                         </a>
+
+                        @if(in_array(Auth::user()->role, [Role::ADMIN, Role::INCOMING]) && !$value->checked)
+                            <br>
+                            <br>
+                            <form action="{{route('incoming.check', [$value->id])}}" method="post">
+                                @csrf
+                                @method('post')
+                                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    V pořádku
+                                </button>
+                            </form>
+                        @endif
+
                         @if(Auth::user()->role == Role::ADMIN)
                             <br>
                             <br>
                             <a href="{{route('incoming.edit', [$value->id])}}" class="bg-fuchsia-500 hover:bg-fuchsia-700 text-white font-bold py-2 px-4 rounded">
                                 Upravit
                             </a>
+                            <br>
+                            <br>
+                            <form onclick="return confirm('Opravdu chcete pokračovat?')" action="{{route('incoming.delete', [$value->id])}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                    Smazat
+                                </button>
+                            </form>
                         @endif
 
                         @if (session('status') === 'thingy-updated')

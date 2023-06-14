@@ -31,7 +31,7 @@
                                         <td class="text-center">{{$user->email}}</td>
                                         <td class="text-center">{{Role::toString($user->role)}}</td>
                                         <td>
-                                            <form action="{{route('user.delete', [$user->id])}}" method="post">
+                                            <form onclick="return confirm('Opravdu chcete pokračovat?')" action="{{route('user.delete', [$user->id])}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold rounded d-block text-center" style="display: block; height: 1em; width: 1em; line-height: 1em">×</button>

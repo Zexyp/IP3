@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaleStoreRequest;
 use App\Http\Requests\SaleUpdateRequest;
 use App\Models\Sale;
 use Illuminate\Http\RedirectResponse;
@@ -22,17 +23,35 @@ class SaleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('sale.new');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaleStoreRequest $request): RedirectResponse
     {
-        //
+        $data = $request->validated();
+        $data['checked'] = isset($data['checked']);
+
+        $sale = new Sale();
+        $sale->fill($data);
+        $sale->save();
+
+        return Redirect::route('sale.view', [$sale->id])->with('status', 'thingy-created');
+    }
+
+    public function storeByEmployee(SaleStoreRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+
+        $sale = new Sale();
+        $sale->fill($data);
+        $sale->save();
+
+        return Redirect::route('sale.view', [$sale->id])->with('status', 'thingy-created');
     }
 
     /**
@@ -46,7 +65,7 @@ class SaleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sale $sale)
+    public function edit(Sale $sale): View
     {
         return view('sale.edit', ['value' => $sale]);
     }

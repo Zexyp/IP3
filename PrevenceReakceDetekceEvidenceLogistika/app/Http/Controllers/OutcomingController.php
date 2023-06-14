@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OutcomingStoreRequest;
 use App\Http\Requests\OutcomingUpdateRequest;
 use App\Models\Outcoming;
 use Illuminate\Http\RedirectResponse;
@@ -22,17 +23,36 @@ class OutcomingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('outcoming.new');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OutcomingStoreRequest $request): RedirectResponse
     {
-        //
+        $data = $request->validated();
+        $data['checked'] = isset($data['checked']);
+
+        $outcoming = new Outcoming();
+        $outcoming->fill($data);
+        $outcoming->save();
+
+        return Redirect::route('outcoming.view', [$outcoming->id])->with('status', 'thingy-created');
+    }
+
+    public function storeByEmployee(OutcomingStoreRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+        $data['checked'] = false;
+
+        $outcoming = new Outcoming();
+        $outcoming->fill($data);
+        $outcoming->save();
+
+        return Redirect::route('outcoming.view', [$outcoming->id])->with('status', 'thingy-created');
     }
 
     /**
@@ -46,7 +66,7 @@ class OutcomingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Outcoming $outcoming)
+    public function edit(Outcoming $outcoming): View
     {
         return view('outcoming.edit', ['value' => $outcoming]);
     }
@@ -58,6 +78,16 @@ class OutcomingController extends Controller
     {
         $data = $request->validated();
         $data['checked'] = isset($data['checked']);
+        $outcoming->fill($data);
+        $outcoming->save();
+
+        return Redirect::route('outcoming.view', [$outcoming->id])->with('status', 'thingy-updated');
+    }
+
+    public function updateCheck(Request $request, Outcoming $outcoming): RedirectResponse
+    {
+        $data = ['checked' => true];
+
         $outcoming->fill($data);
         $outcoming->save();
 
