@@ -4,7 +4,7 @@
         <div class="col-span-3 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
                 @if($actionResponder)
-                    <div class="rounded bg-yellow-500 dark:bg-yellow-700 dark:text-white px-2 py-1 text-black">
+                    <div class="rounded bg-red-500 dark:bg-red-700 dark:text-white px-2 py-1 text-black">
                         Vyžadovaná akce
                     </div>
                     <br/>

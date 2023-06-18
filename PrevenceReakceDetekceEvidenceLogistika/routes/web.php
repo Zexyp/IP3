@@ -13,6 +13,8 @@ use App\Models\Incoming;
 use App\Models\Outcoming;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -32,11 +34,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $actions = ['action.incoming'];
+    $difference = DB::select('SELECT MAX(ABS(incomings.mass - (sales.mass + outcomings.mass))) AS diff
+        FROM incomings
+        JOIN sales ON incomings.date = sales.date
+        JOIN outcomings ON incomings.date = outcomings.date;');
+
     return view('dashboard.view', [
         'actionIncoming' => Incoming::where('checked', '==', false)->count(),
         'actionOutcoming' => Outcoming::where('checked', '==', false)->count(),
-        'actionResponder' => Incoming::where('checked', '==', false)->count(),
+        'actionResponder' => $difference[0]->diff > 10,
     ]);
 })->middleware(['auth'])->name('dashboard');
 
