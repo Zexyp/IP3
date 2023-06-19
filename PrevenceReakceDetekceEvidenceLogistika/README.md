@@ -1,66 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Návrh informačního systému
+**Název projektu:**
+Systém **Prevence Reakce Detekce Evidence a Logistiky**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Úložiště dat:
 
-## About Laravel
+Tabulka **Uživatelů**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> - uživatelské jméno
+> - heslo
+> - role uživatele
+>   - zaměstnanec jídelny
+>   - dovozce
+>   - odvozce
+>   - první respondent
+>   - administrátor
+> - telefonní číslo
+> - email
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Tabulka **Příjmu**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> - datum
+> - hmotnost/množství
+> - cena
 
-## Learning Laravel
+Tabulka **Výdaje**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> - datum
+> - hmotnost/množství
+> - cena
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Tabulka **Odvozu**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> - datum
+> - hmotnost/množství
+> - cena
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Role **Zaměstnance jídelny**
 
-### Premium Partners
+> Zadává hmotnost/množství příjmu\
+> Zadává hmotnost/množství výdeje\
+> Zadává hmotnost/množství odvozu
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Role **Dovozce**
 
-## Contributing
+> Zadává hmotnost/množství dovozu
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Role **Odvozce**
 
-## Code of Conduct
+> Zadává hmotnost/množství odvozu
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Role **Prvního respondenta**
 
-## Security Vulnerabilities
+> Přístup k statistikám\
+> V případě potřeby je informován
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Role **Administrátora**
 
-## License
+> Přístup k statistikám\
+> Správa uživatelů\
+> Správa dat
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Popis
+
+Systém umožňuje sledovat náklady i výdělky jídelen nebo dlouhodobě ukládat záznamy. Může automaticky vystavovat potřebné administrativní dokumenty a informovat jednotlivé strany pro hladký běh instituce. Dokonce lze monitorovat i mrhání jídlem.
+
+## Příklad využití
+
+Tento systém se týká jídelen. Pro svoje fungování vyžaduje spolupráci jak jídelny samotné, tak i dodavatelů, služeb svozu odpadu a především vedení/správy jídelny (třeba škola). Systém je speciálně navržen i pro zabraňování pojišťovacích podvodů 😉.
+
+Dejme tomu, že kuchařka si řekne, že si nabere plnou tašku jídla sebou domů. Ještě, než se však dostane z pracoviště, tak si může zpřetrhat vazy, zranit páteř (posun obratle). Je pak takové zranění úrazem na pracovišti?
+
+Přesně tohle může řešit náš systém. Dosáhne toho měřením nezvyklých rozdílů v evidovaných hodnotách. Pokud systém vyhodnotí nadměrný rozdíl, bude informovat prvního respondenta (např. nadřízeného/ředitele školy) pro případ, že bude nezbytná i první pomoc.
