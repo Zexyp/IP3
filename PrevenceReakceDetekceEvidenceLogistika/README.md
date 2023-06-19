@@ -6,61 +6,61 @@ Systém **Prevence Reakce Detekce Evidence a Logistiky**
 
 Tabulka **Uživatelů**
 
-> - uživatelské jméno
-> - heslo
-> - role uživatele
->   - zaměstnanec jídelny
->   - dovozce
->   - odvozce
->   - první respondent
->   - administrátor
-> - telefonní číslo
-> - email
+- uživatelské jméno
+- heslo
+- role uživatele
+  - zaměstnanec jídelny
+  - dovozce
+  - odvozce
+  - první respondent
+  - administrátor
+- telefonní číslo
+- email
 
 Tabulka **Příjmu**
 
-> - datum
-> - hmotnost/množství
-> - cena
+- datum
+- hmotnost/množství
+- cena
 
 Tabulka **Výdaje**
 
-> - datum
-> - hmotnost/množství
-> - cena
+- datum
+- hmotnost/množství
+- cena
 
 Tabulka **Odvozu**
 
-> - datum
-> - hmotnost/množství
-> - cena
+- datum
+- hmotnost/množství
+- cena
 
 ---
 
 Role **Zaměstnance jídelny**
 
-> Zadává hmotnost/množství příjmu\
-> Zadává hmotnost/množství výdeje\
-> Zadává hmotnost/množství odvozu
+Zadává hmotnost/množství příjmu\
+Zadává hmotnost/množství výdeje\
+Zadává hmotnost/množství odvozu
 
 Role **Dovozce**
 
-> Zadává hmotnost/množství dovozu
+Zadává hmotnost/množství dovozu
 
 Role **Odvozce**
 
-> Zadává hmotnost/množství odvozu
+Zadává hmotnost/množství odvozu
 
 Role **Prvního respondenta**
 
-> Přístup k statistikám\
-> V případě potřeby je informován
+Přístup k statistikám\
+V případě potřeby je informován
 
 Role **Administrátora**
 
-> Přístup k statistikám\
-> Správa uživatelů\
-> Správa dat
+Přístup k statistikám\
+Správa uživatelů\
+Správa dat
 
 ---
 
